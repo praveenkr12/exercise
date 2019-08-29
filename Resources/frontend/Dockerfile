@@ -1,4 +1,7 @@
-FROM node:6.14.2
-EXPOSE 8080
-COPY Server.js .
-CMD node Server.js
+FROM node
+WORKDIR /client
+COPY Package*.json /client/
+RUN npm install
+COPY . /client/
+EXPOSE 3999
+CMD ["npm","start"]
